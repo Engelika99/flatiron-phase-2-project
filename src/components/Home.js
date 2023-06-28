@@ -9,7 +9,7 @@ function Home() {
       <h2>Welcome To Fashionable In Any Weather Baby App!</h2>
       <p>This app provides weather information for your baby's outdoor activities.</p>
       <p>
-        <Link to="/calander">View Weather Calander</Link>
+        <Link to="/calendar">View Weather Calander</Link>
       </p>
     </div>
   );
