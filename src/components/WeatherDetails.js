@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 function WeatherDetails() {
   const [weatherData, setWeatherData] = useState(null);
-
+  // Fetches API
   useEffect(() => {
     fetch("https://api.oceandrivers.com/static/resources.json")
       .then((response) => response.json())
