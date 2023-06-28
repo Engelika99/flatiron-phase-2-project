@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import "./WeatherDetails.css";
 
 function WeatherDetails() {
   const [weatherData, setWeatherData] = useState(null);
@@ -10,6 +11,7 @@ function WeatherDetails() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        //fix fetch
         setWeatherData(data.apis);
       })
       .catch((error) => {
@@ -22,8 +24,8 @@ function WeatherDetails() {
       <h2>Weather Details</h2>
       {weatherData ? (
         <ul>
-          {weatherData.map((weather) => (
-            <li key={weather.id}>
+          {weatherData.map((weather, index) => (
+            <li key={weather.id || index}>
               <h3>Date: {weather.date}</h3>
               <p>Weather: {weather.weather}</p>
               <p>Clothing: {weather.clothing}</p>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./Calendar.css";
 
 function Calendar() {
   const [weatherData, setWeatherData] = useState([]);
