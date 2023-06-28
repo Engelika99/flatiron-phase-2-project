@@ -5,14 +5,14 @@ import "./WeatherDetails.css";
 
 function WeatherDetails() {
   const [weatherData, setWeatherData] = useState(null);
-  // Fetches API
+
+  // Fetches backend db file
   useEffect(() => {
-    fetch("https://api.oceandrivers.com/static/resources.json")
+    fetch(`http://localhost:3001/weather`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        //fix fetch
-        setWeatherData(data.apis);
+        setWeatherData(data);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
@@ -20,12 +20,12 @@ function WeatherDetails() {
   }, []);
 
   return (
-    <div>
+    <div className="weather-details">
       <h2>Weather Details</h2>
       {weatherData ? (
         <ul>
-          {weatherData.map((weather, index) => (
-            <li key={weather.id || index}>
+          {weatherData.map((weather) => (
+            <li key={weather.id}>
               <h3>Date: {weather.date}</h3>
               <p>Weather: {weather.weather}</p>
               <p>Clothing: {weather.clothing}</p>

@@ -18,7 +18,6 @@ function Form() {
     };
 
     try {
-      //Post backend API
       const response = await fetch("http://localhost:3001/weather", {
         method: "POST",
         headers: {
@@ -28,6 +27,9 @@ function Form() {
       });
 
       if (response.ok) {
+        // Handle successful response
+      } else {
+        // Handle error response
       }
     } catch (error) {
       console.log(error);
