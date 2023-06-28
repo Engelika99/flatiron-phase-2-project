@@ -6,7 +6,7 @@ import "./NavBar.css";
 
 function NavBar() {
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
         <li>
           <Link to="/">Home</Link>
