@@ -10,7 +10,7 @@ function WeatherDetails() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setWeatherData(data.weather);
+        setWeatherData(data.apis);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
