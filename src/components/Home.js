@@ -7,8 +7,8 @@ import "./home.css";
 function Home() {
   return (
     <div className="home">
-      <h2>Welcome To Fashionable In Any Weather Baby App!</h2>
-      <p>This app provides weather information for your baby's outdoor activities.</p>
+      <h2>Welcome To Fashionable In Any Weather!</h2>
+      <p>This app provides weather information in order to plan your fashionable outfits in advance.</p>
       <p>
         <Link to="/calendar">View Weather Calendar</Link>
       </p>
