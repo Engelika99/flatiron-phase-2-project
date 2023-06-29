@@ -3,16 +3,19 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 10px 20px rgba(230, 45, 45, 0.89);
+    text-align: center;
   }
   
   .weather-details h2 {
     margin-bottom: 10px;
     color: #22ee2c;
+    text-align: center;
   }
   
   .weather-details ul {
     list-style-type: none;
     padding: 0;
+    text-align: left;
   }
   
   .weather-details li {
@@ -21,7 +24,7 @@
   
   .weather-details h3 {
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     color: #76f046;
   }
