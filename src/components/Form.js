@@ -15,6 +15,7 @@ function Form({ onFormSubmit }) {
       date,
       weather,
       clothing,
+      image: "",
     };
 
     try {
@@ -28,6 +29,9 @@ function Form({ onFormSubmit }) {
 
       if (response.ok) {
         // Handle successful response
+        setDate("");
+        setWeather("");
+        setClothing("");
         onFormSubmit();
       } else {
         // Handle error response
