@@ -20,16 +20,10 @@ The code for the Fashionable In Any Weather app is organized into six components
 * ***Form.js***: The form component for adding new weather details.
 
 
-# Technologies Used
+## Technologies Used
 
 
 * React Router - v5
-
-* Fetch API
-### Backend Code GitHub Repository
-
-https://github.com/Engelika99/flatiron-phase-2-react-backend-baby-weather-app
-
 
 * Open-Meteo API - retrieves weather information for a specific location and date range. It uses the latitude and longitude coordinates for New York City by default, but you can modify it to fetch data for other locations. 
 https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation_probability,rain,showers,snowfall,cloudcover,cloudcover_high&daily=precipitation_hours&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York&forecast_days=16&models=best_match
@@ -37,6 +31,10 @@ https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitud
 * npm install react-icons - to import icons in Calendar.js
 
 * Images - https://unsplash.com/
+
+* Fetch API
+### Backend Code GitHub Repository
+https://github.com/Engelika99/flatiron-phase-2-react-backend-baby-weather-app
 
 * React - installation and how to use intructions below
 
