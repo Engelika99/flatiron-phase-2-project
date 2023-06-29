@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { WiRain, WiSnow, WiCloudy, WiThermometer } from "react-icons/wi";
+import { WiRain, WiSnow, WiCloudy, WiThermometer, WiDaySunny } from "react-icons/wi";
 import "./Calendar.css";
 
 function Calendar({ onFormSubmit }) {
@@ -23,7 +23,7 @@ function Calendar({ onFormSubmit }) {
   const fetchWeatherData = async (latitude, longitude) => {
     try {
       const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation_probability,rain,showers,snowfall,cloudcover,temperature_80m,temperature_120m&timezone=America%2FNew_York&forecast_days=16&models=best_match`
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation_probability,rain,showers,snowfall,cloudcover,cloudcover_high&daily=precipitation_hours&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York&forecast_days=16&models=best_match`
       );
       const data = await response.json();
       return data;
@@ -38,8 +38,10 @@ function Calendar({ onFormSubmit }) {
       return <WiRain />;
     } else if (precipitationProbability >= 40) {
       return <WiSnow />;
-    } else {
+    } else if (precipitationProbability > 0) {
       return <WiCloudy />;
+    } else {
+      return <WiDaySunny />;
     }
   };
 
@@ -70,16 +72,12 @@ function Calendar({ onFormSubmit }) {
           const temperatureData = hourlyData.temperature_2m.slice(startIndex, endIndex);
           const precipitationProbabilityData = hourlyData.precipitation_probability.slice(startIndex, endIndex);
 
-          let maxPrecipitationProbability; // Define the variable here
-
           // Check if temperature data is available
           if (temperatureData && temperatureData.length > 0) {
-            // Convert Celsius to Fahrenheit
-            const averageTemperatureCelsius = temperatureData.reduce((sum, temperature) => sum + temperature, 0) / 24;
-            const averageTemperatureFahrenheit = (averageTemperatureCelsius * 9) / 5 + 32;
-
-            // Calculate the maximum precipitation probability for the day
-            maxPrecipitationProbability = Math.max(...precipitationProbabilityData); // Assign the value here
+            // Calculate the average temperature and maximum precipitation probability for the day
+            const averageTemperatureFahrenheit =
+              temperatureData.reduce((sum, temperature) => sum + temperature, 0) / 24;
+            const maxPrecipitationProbability = Math.max(...precipitationProbabilityData);
 
             calendarCells.push(
               <td key={day} className="date-cell">
@@ -99,9 +97,7 @@ function Calendar({ onFormSubmit }) {
               <td key={day} className="date-cell">
                 <div className="date">{day}</div>
                 <div className="temperature">N/A</div>
-                <div className="precipitation-probability">
-                  {maxPrecipitationProbability}% {getWeatherIcon(maxPrecipitationProbability)}
-                </div>
+                <div className="precipitation-probability">N/A {getWeatherIcon(0)}</div>
               </td>
             );
           }
@@ -112,7 +108,7 @@ function Calendar({ onFormSubmit }) {
             <td key={day} className="date-cell">
               <div className="date">{day}</div>
               <div className="temperature">N/A</div>
-              <div className="precipitation-probability">N/A</div>
+              <div className="precipitation-probability">N/A {getWeatherIcon(0)}</div>
             </td>
           );
         }
