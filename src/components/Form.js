@@ -7,6 +7,7 @@ function Form({ onFormSubmit }) {
   const [date, setDate] = useState("");
   const [weather, setWeather] = useState("");
   const [clothing, setClothing] = useState("");
+  const [image, setImage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +16,7 @@ function Form({ onFormSubmit }) {
       date,
       weather,
       clothing,
-      image: "",
+      image,
     };
 
     try {
@@ -32,6 +33,7 @@ function Form({ onFormSubmit }) {
         setDate("");
         setWeather("");
         setClothing("");
+        setImage("");
         onFormSubmit();
       } else {
         // Handle error response
@@ -53,6 +55,9 @@ function Form({ onFormSubmit }) {
 
         <label htmlFor="clothing">Clothing Recommendation:</label>
         <input type="text" id="clothing" value={clothing} onChange={(e) => setClothing(e.target.value)} />
+
+        <label htmlFor="image">Image URL:</label>
+        <input type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} />
 
         <button type="submit">Submit</button>
       </form>

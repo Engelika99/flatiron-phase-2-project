@@ -8,7 +8,6 @@ function WeatherDetails() {
   const [weatherData, setWeatherData] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // Fetches backend db file
   useEffect(() => {
     fetch(`http://localhost:3001/weather`)
       .then((response) => response.json())
@@ -20,6 +19,7 @@ function WeatherDetails() {
         console.error("Error fetching weather data:", error);
       });
   }, [formSubmitted]);
+
   const handleFormSubmit = () => {
     setFormSubmitted(!formSubmitted);
   };
@@ -34,7 +34,7 @@ function WeatherDetails() {
               <h3>Date: {weather.date}</h3>
               <p>Weather: {weather.weather}</p>
               <p>Clothing: {weather.clothing}</p>
-              <img src={weather.image} alt={weather.weather} />
+              {weather.image && <img src={weather.image} alt={weather.weather} />}
             </li>
           ))}
         </ul>
