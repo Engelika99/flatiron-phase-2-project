@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { WiRain, WiSnow, WiCloudy, WiThermometer } from "react-icons/wi";
 import "./Calendar.css";
 
-function Calendar() {
+function Calendar({ onFormSubmit }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [weatherData, setWeatherData] = useState([]);
 
@@ -101,7 +101,7 @@ function Calendar() {
     };
 
     renderCalendar();
-  }, [currentDate]);
+  }, [currentDate, onFormSubmit]);
 
   return (
     <div className="calendar">

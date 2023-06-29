@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import "./Form.css";
 
-function Form() {
+function Form({ onFormSubmit }) {
   const [date, setDate] = useState("");
   const [weather, setWeather] = useState("");
   const [clothing, setClothing] = useState("");
@@ -28,6 +28,7 @@ function Form() {
 
       if (response.ok) {
         // Handle successful response
+        onFormSubmit();
       } else {
         // Handle error response
       }

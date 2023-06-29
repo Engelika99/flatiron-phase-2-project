@@ -6,6 +6,7 @@ import Form from "./Form";
 
 function WeatherDetails() {
   const [weatherData, setWeatherData] = useState(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Fetches backend db file
   useEffect(() => {
@@ -18,7 +19,10 @@ function WeatherDetails() {
       .catch((error) => {
         console.error("Error fetching weather data:", error);
       });
-  }, []);
+  }, [formSubmitted]);
+  const handleFormSubmit = () => {
+    setFormSubmitted(!formSubmitted);
+  };
 
   return (
     <div className="weather-details">
@@ -37,7 +41,7 @@ function WeatherDetails() {
       ) : (
         <p>Loading weather data...</p>
       )}
-      <Form />
+      <Form onFormSubmit={handleFormSubmit} />
     </div>
   );
 }
