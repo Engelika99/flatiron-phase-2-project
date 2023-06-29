@@ -61,28 +61,61 @@ function Calendar({ onFormSubmit }) {
       for (let day = 1; day <= numDays; day++) {
         const weather = await fetchWeatherData(40.7143, -74.006); // New York coordinates
 
-        // Extract the temperature and precipitation probability for the current day
-        const hourlyData = weather.hourly;
-        const startIndex = day - 1;
-        const endIndex = day * 24;
-        const temperatureData = hourlyData.temperature_2m.slice(startIndex, endIndex);
-        const precipitationProbabilityData = hourlyData.precipitation_probability.slice(startIndex, endIndex);
+        // Check if the weather data is available and contains temperature information
+        if (weather && weather.hourly && weather.hourly.temperature_2m) {
+          // Extract the temperature and precipitation probability for the current day
+          const hourlyData = weather.hourly;
+          const startIndex = day - 1;
+          const endIndex = day * 24;
+          const temperatureData = hourlyData.temperature_2m.slice(startIndex, endIndex);
+          const precipitationProbabilityData = hourlyData.precipitation_probability.slice(startIndex, endIndex);
 
-        // Calculate the average temperature and maximum precipitation probability for the day
-        const averageTemperature = temperatureData.reduce((sum, temperature) => sum + temperature, 0) / 24;
-        const maxPrecipitationProbability = Math.max(...precipitationProbabilityData);
+          let maxPrecipitationProbability; // Define the variable here
 
-        calendarCells.push(
-          <td key={day} className="date-cell">
-            <div className="date">{day}</div>
-            <div className="temperature">
-              <WiThermometer /> {averageTemperature.toFixed(1)}°C
-            </div>
-            <div className="precipitation-probability">
-              {maxPrecipitationProbability}% {getWeatherIcon(maxPrecipitationProbability)}
-            </div>
-          </td>
-        );
+          // Check if temperature data is available
+          if (temperatureData && temperatureData.length > 0) {
+            // Convert Celsius to Fahrenheit
+            const averageTemperatureCelsius = temperatureData.reduce((sum, temperature) => sum + temperature, 0) / 24;
+            const averageTemperatureFahrenheit = (averageTemperatureCelsius * 9) / 5 + 32;
+
+            // Calculate the maximum precipitation probability for the day
+            maxPrecipitationProbability = Math.max(...precipitationProbabilityData); // Assign the value here
+
+            calendarCells.push(
+              <td key={day} className="date-cell">
+                <div className="date">{day}</div>
+                <div className="temperature">
+                  <WiThermometer /> {averageTemperatureFahrenheit.toFixed(1)}°F
+                </div>
+                <div className="precipitation-probability">
+                  {maxPrecipitationProbability}% {getWeatherIcon(maxPrecipitationProbability)}
+                </div>
+              </td>
+            );
+          } else {
+            // Temperature data is not available
+            // Handle the case when temperature data is missing
+            calendarCells.push(
+              <td key={day} className="date-cell">
+                <div className="date">{day}</div>
+                <div className="temperature">N/A</div>
+                <div className="precipitation-probability">
+                  {maxPrecipitationProbability}% {getWeatherIcon(maxPrecipitationProbability)}
+                </div>
+              </td>
+            );
+          }
+        } else {
+          // Weather data is not available
+          // Handle the case when weather data is missing
+          calendarCells.push(
+            <td key={day} className="date-cell">
+              <div className="date">{day}</div>
+              <div className="temperature">N/A</div>
+              <div className="precipitation-probability">N/A</div>
+            </td>
+          );
+        }
 
         if (calendarCells.length === 7) {
           calendarRows.push(<tr key={`row-${calendarRows.length}`}>{calendarCells}</tr>);
