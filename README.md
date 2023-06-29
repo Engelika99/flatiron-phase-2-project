@@ -74,8 +74,11 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-* Need help understanding useState? Checkout my blog here:
+### Need help understanding useState? Checkout my blog here:
 https://medium.com/@engelikaking99/simple-to-understand-information-on-usestate-f43672a4ac06
+
+### Check out a video demonstration of the finished product
+https://youtu.be/GN53wAe6XXQ
 
 ## Contributing
 
