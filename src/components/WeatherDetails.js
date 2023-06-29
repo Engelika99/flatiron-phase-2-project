@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./WeatherDetails.css";
+import Form from "./Form";
 
 function WeatherDetails() {
   const [weatherData, setWeatherData] = useState(null);
@@ -36,6 +37,7 @@ function WeatherDetails() {
       ) : (
         <p>Loading weather data...</p>
       )}
+      <Form />
     </div>
   );
 }
