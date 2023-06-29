@@ -1,6 +1,6 @@
 # Fashionable In Any Weather
 
-Fashionable In Any Weather is a weather app that provides weather information to help you plan your fashionable outfits in advance.
+Fashionable In Any Weather is a weather app that provides weather information to help you plan your fashionable outfits in advance for you and/or child.
 
 ## Features
 
