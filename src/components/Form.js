@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import "./Form.css";
+import "./form.css";
 
 function Form({ onFormSubmit }) {
   const [date, setDate] = useState("");

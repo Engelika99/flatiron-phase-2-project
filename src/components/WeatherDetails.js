@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import "./WeatherDetails.css";
+import "./weather-details.css";
 import Form from "./Form";
 
 function WeatherDetails() {

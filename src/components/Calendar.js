@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { WiRain, WiSnow, WiCloudy, WiThermometer, WiDaySunny } from "react-icons/wi";
-import "./Calendar.css";
+import "./calendar.css";
 
 function Calendar({ onFormSubmit }) {
   const [currentDate, setCurrentDate] = useState(new Date());
