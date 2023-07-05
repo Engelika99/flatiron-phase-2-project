@@ -68,7 +68,10 @@ Your app is ready to be deployed!
 ## Deployment
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-[Visit the deployed project](https://main--lighthearted-gaufre-ec91cb.netlify.app/)
+### Visit A Visual Preview Of The Finished App
+
+[Visit the frontend deployed project](https://main--fashionable-in-any-weather-frontend.netlify.app/)
+[Visit the backend deployed project](https://fashionable-in-any-weather-flatiron.onrender.com/weather)
 
 ## Learn More
 
