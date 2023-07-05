@@ -20,7 +20,7 @@ function Form({ onFormSubmit }) {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/weather", {
+      const response = await fetch(`https://fashionable-in-any-weather-flatiron.onrender.com/weather`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

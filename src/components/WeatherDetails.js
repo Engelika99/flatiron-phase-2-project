@@ -9,7 +9,7 @@ function WeatherDetails() {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/weather`)
+    fetch(`https://fashionable-in-any-weather-flatiron.onrender.com/weather`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
